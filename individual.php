@@ -531,13 +531,6 @@ include("header_link.php");  ?>
                     </div>
                 </div>
             </div>
-            <!-- /Add Menu Modal -->
-            
-            
-            
-    <?php
-    include("header.php");
-    ?>
         </div>
     </div>
     <?php

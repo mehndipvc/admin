@@ -14,6 +14,7 @@ include("header_link.php"); ?>
         <?php
 //database file link
 include("config.php");
+include("header.php");
 ?>
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
         <!-- Main Wrapper -->
@@ -415,12 +416,6 @@ if ($total_pages > 3) {
                         </div>
                     </div>
                 </div>
-                <!-- /Add banner Modal -->
-
-                <?php
- // header
-include("header.php");
-?>
             </div>
         </div>
         <?php

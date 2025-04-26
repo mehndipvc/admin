@@ -16,6 +16,7 @@
      <?php
         //database file link
         include("config.php");
+        include("header.php");
         ?>
      
      <!-- Main Wrapper -->
@@ -107,44 +108,7 @@
                                                          </div>
                                                      </div>
                                                  </div>
-                                             </td>
-                                             
-                                             
-                                                 <!--Old Start-->
-                                                 <!--<div class="d-flex gal_button">-->
-                                                 <!--   <?//php-->
-                                                    //echo '<a onclick="openGallery(' . $cnt1 . ')" class="gal_image">Show</a>';
-                                                    // foreach ($un as $index => $unimg) {
-                                                    //     echo '<a class="fancybox' . ' ' . $cnt1 . '" rel="gallery" href="' . $unimg->image . '" data-fancybox="image'.$cnt1.'"></a>';
-                                                    // }
-                                                   ?>-->
-                                                    
-                                                 <!--   <script>-->
-                                                 <!--       function openGallery(num) {-->
-                                                 <!--           let cou = num;-->
-                                                    
-                                                 <!--           let galleryElements = $(".fancybox." + cou);-->
-                                                 <!--           console.log(galleryElements);-->
-                                                            
-                                                 <!--           galleryElements.fancybox({-->
-                                                 <!--               type: 'image',-->
-                                                 <!--               closeBtn: true,-->
-                                                 <!--               arrows: true,-->
-                                                 <!--               loop: true,-->
-                                                 <!--           });-->
-                                                    
-                                                 <!--           galleryElements.eq(0).trigger("click");-->
-                                                 <!--       }-->
-                                                 <!--   </script>-->
-
-                                                 <!--</div>-->
-                                                 
-                                                 <!--Old End-->
-                                                 
-                                                 
-                                                
-                                                
-                                                
+                                             </td>                                                
                                            
                                              <td class="text-right">
                                                  <div class="dropdown dropdown-action">
@@ -314,12 +278,6 @@
                      </div>
                  </div>
              </div>
-             <!-- /Add banner Modal -->
-
-            <?php
-        // header
-        include("header.php");
-        ?>
          </div>
      </div>
      <?php

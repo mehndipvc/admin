@@ -13,6 +13,7 @@
      <?php
         //database file link
         include("config.php");
+        include("header.php");
        
         $assetImgUrl = "https://mehndipvc.shop/api/assets/";
         ?>
@@ -256,11 +257,6 @@
                      </div>
                  </div>
              </div>
-             <!-- /Add Menu Modal -->
-<?php
- include("header.php");
-?>
-
          </div>
      </div>
      <?php

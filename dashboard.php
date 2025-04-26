@@ -13,6 +13,7 @@
 		//header link
 
 		include("config.php");
+		include("header.php");
 		?>
  	<!-- Main Wrapper -->
  	<div class="main-wrapper">
@@ -208,13 +209,6 @@
  					
 				</div>
  			</div>
-
-            
- <?php
-				// header
-				include("header.php");
-				?>
-
  		</div>
  	</div>
  	<?php

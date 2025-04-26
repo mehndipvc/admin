@@ -51,6 +51,7 @@ include("header_link.php"); ?>
     <?php
     //database file link
     include("config.php");
+    include("header.php");
     ?>
     <!-- Main Wrapper -->
     <div class="main-wrapper">
@@ -339,12 +340,6 @@ include("header_link.php"); ?>
                     </div>
                 </div>
             </div>
-            <!-- /Page Content -->
-
-            <?php
-            include("header.php");
-            ?>
-
         </div>
     </div>
     <?php
