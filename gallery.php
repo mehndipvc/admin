@@ -411,8 +411,9 @@ if ($total_pages > 3) {
                                     <div class="submit-section">
                                         <button type="submit" name="edit" class="btn btn-primary submit-btn" id="submitGallery">Submit</button>
                                     </div>
+                              </form>
                                     <div class="statusMsg mt-1" style="text-align: center;"></div>
-                                </form>
+                                
                             </div>
                         </div>
                     </div>
@@ -427,8 +428,9 @@ include("footer_link.php");
 include("footer.php");
 
 ?>
-    </body>
-</html>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function (e) {
         // Submit form data via Ajax
