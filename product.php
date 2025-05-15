@@ -125,33 +125,78 @@ $assetImgUrl = "https://mehndipvc.shop/api/assets/";
                 </div>
             </div>
 
-            <!-- Add Product Modal -->
-            <div class="modal fade" id="add_holiday" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-dialog-centered modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Add Product</h5>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="fupForm" enctype="multipart/form-data">
-                                <!-- Category, Code, Name, Price, Qty fields -->
-                                <!-- About -->
-                                <div class="form-group">
-                                    <label>About</label>
-                                    <textarea class="form-control summernote" name="about"></textarea>
-                                </div>
-                                <!-- Features -->
-                                <div class="form-group">
-                                    <label>Features</label>
-                                    <textarea class="form-control summernote" name="features"></textarea>
-                                </div>
-                                <!-- Image Upload -->
-                                <div class="form-group">
-                                    <label>Image</label>
-                                    <input class="form-control" type="file" name="image[]" />
-                                </div>
-                                <div id="row"></div>
+            <!-- Add banner Modal -->
+             <div class="modal custom-modal fade" id="add_holiday" role="dialog">
+                 <div class="modal-dialog modal-dialog-centered" role="document">
+                     <div class="modal-content">
+                         <div class="modal-header">
+                             <h5 class="modal-title">Add Product</h5>
+                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                             </button>
+                         </div>
+                         <div class="modal-body">
+                             <form id="fupForm" enctype="multipart/form-data">
+                                 <div class="form-group">
+                                     <label>Category <span class="text-danger">*</span></label>
+                                     <select class="form-control" name="cat_id">
+                                         <option value="">--Select- -</option>
+                                         <?php
+                                            $cat_fetch = $obj->fetch("SELECT * FROM category ORDER BY name ASC");
+                                            foreach ($cat_fetch as $cval) {
+                                            ?>
+                                             <option value="<?= $cval['id'] ?>"><?= $cval['name'] ?></option>
+                                         <?php  } ?>
+                                     </select>
+                                 </div>
+                                 <div class="form-group">
+                                     <label>Item Code <span class="text-danger">*</span></label>
+                                     <input class="form-control" type="text" name="code" id="code" />
+                                 </div>
+                                 <div class="form-group">
+                                     <label>Name <span class="text-danger">*</span></label>
+                                     <input class="form-control" type="text" name="name" id="name" />
+                                 </div>
+                                 <div class="form-group">
+                                     <label>Price <span class="text-danger">*</span></label>
+                                     <input class="form-control" type="text" name="price" id="price" />
+                                 </div>
+                                 <div class="form-group">
+                                     <label>Qty <span class="text-danger">*</span></label>
+                                     <input class="form-control" type="text" name="qty" id="qty" />
+                                 </div>
+                                 <div class="form-group">
+                                     <label>About <span class="text-danger">*</span></label>
+                                     
+                                     <?php
+                                     $about='<h6><span style="color: rgb(100, 100, 100); font-family: Roboto, sans-serif; text-align: justify;">uPVC Sheet, panel,
+                                     louvers has been gaining its acceptance in interior design in recent times. PVC is a soft and flexible material that do not
+                                     break easily. Earlier plywood was the main option for the residential and commercial interiors because people used to think
+                                     it is safer than other available materials. However PVCs are completely nontoxic, termite proof, water proof, damp proof,
+                                     and fire returned.</span><span style="font-size: 14px;">.</span></h6>';
+                                     ?>
+                                     
+                                     <textarea class="form-control summernote" name="about"><?=$about?></textarea>
+                                     <span class="des" style="color: red;"></span>
+                                 </div>
+                                 <div class="form-group">
+                                     <label>Features <span class="text-danger">*</span></label>
+                                     <?php
+                                     $feature='<table class="table table-bordered"><tbody><tr><td><b><span style="font-size: 13px;">Thickness</span></b></td><td>
+                                     <b>20mm</b></td></tr><tr><td><b><span style="font-size: 13px;">Height</span></b></td><td><b>78"</b></td></tr><tr><td><b>
+                                     <span style="font-size: 13px;">Width</span></b></td><td><b>22"</b></td></tr><tr><td><b><span style="font-size: 13px;">
+                                     Weight</span></b></td><td><b>6.3 Kg</b></td></tr></tbody></table><table class="table table-bordered"><tbody><tr><td>
+                                     *GST & Transportation Extra.</td></tr></tbody></table>';
+                                     ?>
+                                     <textarea class="form-control summernote" name="features"><?=$feature?></textarea>
+                                     <span class="des" style="color: red;"></span>
+                                 </div>
+                                 <div class="form-group">
+                                     <label>Image <span class="text-danger">*</span></label>
+                                     <input class="form-control" type="file" name="image[]" id="image" />
+                                     <span class="image" style="color: red;"></span>
+                                 </div>
+                                 <div id="row"></div>
                                 <div class="form-group">
                                     <label>Stock</label>
                                     <select class="form-control" name="stock">
@@ -159,19 +204,23 @@ $assetImgUrl = "https://mehndipvc.shop/api/assets/";
                                         <option value="Not Available">Not Available</option>
                                     </select>
                                 </div>
-                                <div class="submit-section">
-                                    <span class="btn btn-primary" id="add">+</span>
-                                    <input type="hidden" name="total_item" id="total_item" value="1">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                            </form>
-                            <div class="statusMsg mt-2 text-center"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Add Product Modal -->
-
+                                 <div class="submit-section">
+                                     <span class="btn btn-primary" id="add">+</span>
+                                     <input type="hidden" name="total_item" id="total_item" value="1">
+                                     <button type="submit" name="edit" class="btn btn-primary submit-btn" id="submit">
+                                         Submit
+                                     </button>
+                                 </div>
+                             </form>
+                             <div class="statusMsg" style="text-align: center;"></div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+<?php
+        // header
+        include("header.php");
+        ?>
         </div>
     </div>
 </div>
