@@ -1,3 +1,6 @@
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 <?php
 include("config.php");
 include("add-watermark.php");
@@ -56,7 +59,7 @@ if (!empty($_POST['cat_id']) && !empty($_FILES['image']['name'])) {
         }
 			
 		if ($query) {
-			echo 200;
+			echo '200';
 		} else {
 			echo '<p class="alert alert-danger">Error something wrong!</p>';
 		}
