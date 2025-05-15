@@ -16,6 +16,7 @@ include("header_link.php"); ?>
 include("config.php");
 include("header.php");
 ?>
+<script src="js/jquery-3.2.1.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
         <!-- Main Wrapper -->
         <div class="main-wrapper">
