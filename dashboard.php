@@ -7,16 +7,14 @@
  <!DOCTYPE html>
  <html>
  <?php include("header_link.php"); ?>
-
  <body>
- 	<?php
+ 	<!-- Main Wrapper -->
+ 	<div class="main-wrapper">
+		<?php
 		//header link
-
 		include("config.php");
 		include("header.php");
 		?>
- 	<!-- Main Wrapper -->
- 	<div class="main-wrapper">
  		<!-- Page Wrapper -->
  		<div class="page-wrapper">
 
