@@ -12,16 +12,16 @@ include("header_link.php"); ?>
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 
 <body>
-    <?php
-    //database file link
-    include("config.php");
-    ?>
-    <?php
-    // header
-    include("header.php");
-    ?>
     <!-- Main Wrapper -->
     <div class="main-wrapper">
+        <?php
+        //database file link
+        include("config.php");
+        ?>
+        <?php
+        // header
+        include("header.php");
+        ?>
         <!-- Page Wrapper -->
         <div class="page-wrapper">
             <!-- Page Content -->
@@ -37,7 +37,7 @@ include("header_link.php"); ?>
                             </ul>
                         </div>
                         <div class="col-auto float-right ml-auto">
-                        <a href="property.php" class="btn add-btn"><i class="fa fa-eye"></i> View Property</a>
+                            <a href="property.php" class="btn add-btn"><i class="fa fa-eye"></i> View Property</a>
                         </div>
                     </div>
                 </div>
@@ -58,12 +58,14 @@ include("header_link.php"); ?>
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Location <span class="text-danger">*</span></label>
-                                                <select class="form-control" aria-label="Default select example" id="location" name="location">
+                                                <select class="form-control" aria-label="Default select example"
+                                                    id="location" name="location">
                                                     <option selected>Open this select Location</option>
                                                     <?php
                                                     $fetch = $obj->fetch('SELECT * from brand');
                                                     foreach ($fetch as $va) { ?>
-                                                        <option value="<?php echo $va['id'] ?>" <?php echo ($va['id'] == $val['location']) ? 'selected' : ''; ?>><?php echo $va['brand'] ?></option>
+                                                        <option value="<?php echo $va['id'] ?>" <?php echo ($va['id'] == $val['location']) ? 'selected' : ''; ?>>
+                                                            <?php echo $va['brand'] ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -71,14 +73,16 @@ include("header_link.php"); ?>
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Sub Location <span class="text-danger">*</span></label>
-                                                <select class="form-control" aria-label="Default select example" id="sublocation" name="sub_location">
+                                                <select class="form-control" aria-label="Default select example"
+                                                    id="sublocation" name="sub_location">
                                                     <?php
                                                     $mid = $val['sub_location'];
                                                     $fet = $obj->fetch("SELECT * From model WHERE id='$mid'");
                                                     foreach ($fet as $vaf) { ?>
-                                                        <option value="<?php echo $vaf['id'] ?>" <?php echo ($vaf['id'] == $val['sub_location']) ? 'selected' : ''; ?>><?php echo $vaf['model'] ?></option>
+                                                        <option value="<?php echo $vaf['id'] ?>" <?php echo ($vaf['id'] == $val['sub_location']) ? 'selected' : ''; ?>>
+                                                            <?php echo $vaf['model'] ?></option>
 
-                                                    <?php
+                                                        <?php
                                                     } ?>
                                                 </select>
                                             </div>
@@ -89,13 +93,15 @@ include("header_link.php"); ?>
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Bhk <span class="text-danger">*</span></label>
-                                                <select class="form-control" aria-label="Default select example" id="bhk" name="bhk">
+                                                <select class="form-control" aria-label="Default select example"
+                                                    id="bhk" name="bhk">
                                                     <option selected>Select Bhk</option>
                                                     <?php
                                                     $fetch_bhk = $obj->fetch('SELECT * from year');
                                                     foreach ($fetch_bhk as $val_bhk) {
-                                                    ?>
-                                                        <option value="<?php echo $val_bhk['id'] ?>" <?php echo ($val_bhk['id'] == $val['bhk']) ? 'selected' : ''; ?>><?php echo $val_bhk['year'] ?></option>
+                                                        ?>
+                                                        <option value="<?php echo $val_bhk['id'] ?>" <?php echo ($val_bhk['id'] == $val['bhk']) ? 'selected' : ''; ?>>
+                                                            <?php echo $val_bhk['year'] ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -103,7 +109,8 @@ include("header_link.php"); ?>
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Property Type <span class="text-danger">*</span></label>
-                                                <select class="form-control" aria-label="Default select example" id="pro_type" name="pro_type">
+                                                <select class="form-control" aria-label="Default select example"
+                                                    id="pro_type" name="pro_type">
                                                     <option value="">Select Property Type</option>
                                                     <option value="For Rent" <?php echo ('For Rent' == $val['pro_type']) ? 'selected' : ''; ?>>For Rent</option>
                                                     <option value="For Buy" <?php echo ('For Buy' == $val['pro_type']) ? 'selected' : ''; ?>>For Buy</option>
@@ -115,10 +122,13 @@ include("header_link.php"); ?>
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Status <span class="text-danger">*</span></label>
-                                                <select class="form-control" aria-label="Default select example" id="status" name="status">
+                                                <select class="form-control" aria-label="Default select example"
+                                                    id="status" name="status">
                                                     <option value="">Select Status</option>
-                                                    <option value="Ready To Move" <?php echo ('Ready To Move' == $val['status']) ? 'selected' : ''; ?>>Ready To Move</option>
-                                                    <option value="Under Construction" <?php echo ('Under Construction' == $val['status']) ? 'selected' : ''; ?>>Under Construction</option>
+                                                    <option value="Ready To Move" <?php echo ('Ready To Move' == $val['status']) ? 'selected' : ''; ?>>Ready To Move
+                                                    </option>
+                                                    <option value="Under Construction" <?php echo ('Under Construction' == $val['status']) ? 'selected' : ''; ?>>Under
+                                                        Construction</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -127,14 +137,18 @@ include("header_link.php"); ?>
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Product Name <span class="text-danger">*</span></label>
-                                                <input id="banner<?php echo $val['id']; ?>" class="form-control" value="<?php echo $val['pro_name']; ?>" name="pro_name" type="text" />
+                                                <input id="banner<?php echo $val['id']; ?>" class="form-control"
+                                                    value="<?php echo $val['pro_name']; ?>" name="pro_name"
+                                                    type="text" />
                                                 <span class="dr_name"></span>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Property Full Address <span class="text-danger">*</span></label>
-                                                <input id="qly<?php echo $val['id']; ?>" class="form-control" value="<?php echo $val['pro_full_ads']; ?>" type="text" name="pro_full_ads" />
+                                                <input id="qly<?php echo $val['id']; ?>" class="form-control"
+                                                    value="<?php echo $val['pro_full_ads']; ?>" type="text"
+                                                    name="pro_full_ads" />
                                                 <span class="qly"></span>
                                             </div>
                                         </div>
@@ -180,17 +194,23 @@ include("header_link.php"); ?>
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label>Floor Plan <span class="text-danger">*</span></label><br />
-                                                <a data-fancybox="image" id="imga" data-caption="<?php echo $val['floor_plan'] ?>" data-src="<?php echo $val['floor_plan'] ?>" style="cursor:pointer;">
-                                                    <img class="thumbnail img<?php echo $i; ?>" id="img" src="<?php echo $val['floor_plan']; ?>" style="width: 100px;" />
+                                                <a data-fancybox="image" id="imga"
+                                                    data-caption="<?php echo $val['floor_plan'] ?>"
+                                                    data-src="<?php echo $val['floor_plan'] ?>" style="cursor:pointer;">
+                                                    <img class="thumbnail img<?php echo $i; ?>" id="img"
+                                                        src="<?php echo $val['floor_plan']; ?>" style="width: 100px;" />
                                                 </a>
-                                                <input id="image" class="form-control file" type="file" style="margin-top: 10px;" name="floor_plan" />
-                                                <input type="hidden" name="floor_plan_old" value="<?php echo $val['floor_plan']; ?>" id="floor_plan_old" />
+                                                <input id="image" class="form-control file" type="file"
+                                                    style="margin-top: 10px;" name="floor_plan" />
+                                                <input type="hidden" name="floor_plan_old"
+                                                    value="<?php echo $val['floor_plan']; ?>" id="floor_plan_old" />
                                             </div>
                                         </div>
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label>Location Map Iframe<span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" name="loc_map" value='<?php echo base64_decode($val['loc_map']) ?>'>
+                                                <input type="text" class="form-control" name="loc_map"
+                                                    value='<?php echo base64_decode($val['loc_map']) ?>'>
                                                 <span class="des" style="color: red;"></span>
                                             </div>
                                         </div>
@@ -198,7 +218,8 @@ include("header_link.php"); ?>
                                             <div class="form-group">
                                                 <label>Upload Brochure <span class="text-danger">*</span></label>
                                                 <input type="file" class="form-control" name="brochure">
-                                                <input type="hidden" name="brochure_old" value="<?php echo $val['brochure']; ?>" id="brochure_old" />
+                                                <input type="hidden" name="brochure_old"
+                                                    value="<?php echo $val['brochure']; ?>" id="brochure_old" />
                                                 <span class="des" style="color: red;"></span>
                                             </div>
                                         </div>
@@ -210,24 +231,31 @@ include("header_link.php"); ?>
                                         for ($i = 0; $i < $cn; $i++) {
                                             if ($unser[$i]) {
                                                 $to_img++;
-                                        ?>
+                                                ?>
                                                 <div class="col-sm-12">
                                                     <div class="form-group">
                                                         <label>Image <span class="text-danger">*</span></label><br />
-                                                        <a data-fancybox="image" id="imga" data-caption="<?php echo $unser[$i] ?>" data-src="<?php echo $unser[$i] ?>" style="cursor:pointer;">
-                                                            <img class="thumbnail img<?php echo $i; ?>" id="img" src="<?php echo $unser[$i]; ?>" style="width: 100px;" />
+                                                        <a data-fancybox="image" id="imga"
+                                                            data-caption="<?php echo $unser[$i] ?>"
+                                                            data-src="<?php echo $unser[$i] ?>" style="cursor:pointer;">
+                                                            <img class="thumbnail img<?php echo $i; ?>" id="img"
+                                                                src="<?php echo $unser[$i]; ?>" style="width: 100px;" />
                                                         </a>
-                                                        <input id="image<?php echo $val['id']; ?>" class="form-control file<?php echo $i; ?>" type="file" style="margin-top: 10px;" name="img[]" />
-                                                        <input type="hidden" name="old_image[]" value="<?php echo $unser[$i]; ?>" id="old_image<?php echo $i; ?>" />
+                                                        <input id="image<?php echo $val['id']; ?>"
+                                                            class="form-control file<?php echo $i; ?>" type="file"
+                                                            style="margin-top: 10px;" name="img[]" />
+                                                        <input type="hidden" name="old_image[]"
+                                                            value="<?php echo $unser[$i]; ?>" id="old_image<?php echo $i; ?>" />
                                                     </div>
                                                     <div class="form-group">
-                                                        <p class="btn btn-danger" id="dtimg<?php echo $i; ?>"><i class="fa fa-trash"></i> Delete Image</p>
-                                                    
+                                                        <p class="btn btn-danger" id="dtimg<?php echo $i; ?>"><i
+                                                                class="fa fa-trash"></i> Delete Image</p>
+
                                                     </div>
                                                 </div>
 
                                                 <script type="text/javascript">
-                                                    $(".file<?php echo $i; ?>").on("change", function(e) {
+                                                    $(".file<?php echo $i; ?>").on("change", function (e) {
                                                         e.preventDefault();
                                                         var src = URL.createObjectURL(event.target.files[0]);
                                                         //alert(src);
@@ -235,16 +263,15 @@ include("header_link.php"); ?>
                                                     });
                                                 </script>
                                                 <script>
-                                                    $('#dtimg<?php echo $i; ?>').on("click", function(){
+                                                    $('#dtimg<?php echo $i; ?>').on("click", function () {
                                                         //alert("jjh");
                                                         var image = $('#old_image<?php echo $i; ?>').val();
-                                                        var product_id=<?php echo $val['id'] ?>;
+                                                        var product_id = <?php echo $val['id'] ?>;
                                                         $.ajax({
-                                                            url:"delete_image.php",
-                                                            type:"post",
-                                                            data:{image:image,product_id,product_id},
-                                                            success: function(data)
-                                                            {
+                                                            url: "delete_image.php",
+                                                            type: "post",
+                                                            data: { image: image, product_id, product_id },
+                                                            success: function (data) {
                                                                 //alert(data);
                                                                 $('.preview1').html(data);
                                                                 setTimeout(location.reload.bind(location), 1500);
@@ -252,16 +279,19 @@ include("header_link.php"); ?>
                                                         })
                                                     })
                                                 </script>
-                                        <?php }
+                                            <?php }
                                         } ?>
 
                                         <div class="add_img col-sm-12"></div>
                                         <div class="col-sm-12">
                                             <div class="submit-section">
                                                 <span class="btn btn-primary" id="add_input">+</span>
-                                                <input type="hidden" class="total_img" name="total_img" value="<?php echo $to_img; ?>">
-                                                <input type="hidden" name="doctor_id" value="<?php echo $val['id']; ?>" id="doctor_id" />
-                                                <button name="submit" id="edit_banner_btn<?php echo $val['id']; ?>" class="btn btn-primary edit_banner_btn">Submit</button>
+                                                <input type="hidden" class="total_img" name="total_img"
+                                                    value="<?php echo $to_img; ?>">
+                                                <input type="hidden" name="doctor_id" value="<?php echo $val['id']; ?>"
+                                                    id="doctor_id" />
+                                                <button name="submit" id="edit_banner_btn<?php echo $val['id']; ?>"
+                                                    class="btn btn-primary edit_banner_btn">Submit</button>
                                             </div>
                                             <div class="preview1" style="text-align: center;"></div>
                                         </div>
@@ -286,9 +316,9 @@ include("header_link.php"); ?>
 
 </html>
 <script type="text/javascript">
-    $(document).ready(function(e) {
+    $(document).ready(function (e) {
         // Submit form data via Ajax
-        $("#edit_doctor").on("submit", function(e) {
+        $("#edit_doctor").on("submit", function (e) {
             e.preventDefault();
             $.ajax({
                 type: "POST",
@@ -301,7 +331,7 @@ include("header_link.php"); ?>
                 //     $('.submitBtn').attr("disabled","disabled");
                 //     $('#fupForm').css("opacity",".5");
                 // },
-                success: function(data) {
+                success: function (data) {
                     //console.log(response);
 
                     // var mydata = JSON.parse(response);
@@ -326,7 +356,7 @@ include("header_link.php"); ?>
 </script>
 
 <script type="text/javascript">
-    $(".file").on("change", function(e) {
+    $(".file").on("change", function (e) {
         e.preventDefault();
         var src = URL.createObjectURL(event.target.files[0]);
         //alert(src);
@@ -335,9 +365,9 @@ include("header_link.php"); ?>
 </script>
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         var count = $('.total_img').val();
-        $("#add_input").on("click", function() {
+        $("#add_input").on("click", function () {
             count++;
             $('.total_img').val(count);
             var html_code = '';
@@ -350,7 +380,7 @@ include("header_link.php"); ?>
             html_code += '</div>';
             $('.add_img').append(html_code);
         });
-        $(document).on('click', '.remove_row', function() {
+        $(document).on('click', '.remove_row', function () {
             var row_id = $(this).attr("id");
             $('#ro_input' + row_id).remove();
             count--;
@@ -359,7 +389,7 @@ include("header_link.php"); ?>
     });
 </script>
 <script>
-    $('#menu').on("change", function() {
+    $('#menu').on("change", function () {
         var menu = $('#menu').val();
         $.ajax({
             url: "fetch-submenu.php",
@@ -367,14 +397,14 @@ include("header_link.php"); ?>
             data: {
                 menu: menu
             },
-            success: function(data) {
+            success: function (data) {
                 $('#submenu').html(data);
             }
         })
     })
 </script>
 <script>
-    $(".cat option").each(function() {
+    $(".cat option").each(function () {
         $(this).siblings('[value="' + this.value + '"]').remove();
     });
 </script>

@@ -34,13 +34,13 @@ include("header_link.php");  ?>
 
 </style>
 <body>
-    <?php
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+        <?php
     //database file link
     include("config.php");
     include("header.php");
     ?>
-    <!-- Main Wrapper -->
-    <div class="main-wrapper">
         <!-- Page Wrapper -->
         <div class="page-wrapper">
             <!-- Page Content -->

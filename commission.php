@@ -7,17 +7,16 @@ if (empty($_SESSION['username'])) {
 <!DOCTYPE html>
 <html>
 <?php //header link
-include("header_link.php");  ?>
+include("header_link.php"); ?>
 
 <body>
-    <?php
-    //database file link
-    include("config.php");
-    include("header.php");
-   
-    ?>
     <!-- Main Wrapper -->
     <div class="main-wrapper">
+        <?php
+        //database file link
+        include("config.php");
+        include("header.php");
+        ?>
         <!-- Page Wrapper -->
         <div class="page-wrapper">
             <!-- Page Content -->
@@ -33,7 +32,8 @@ include("header_link.php");  ?>
                             </ul>
                         </div>
                         <div class="col-auto float-right ml-auto">
-                            <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_holiday"><i class="fa fa-plus"></i> Add Plan</a>
+                            <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_holiday"><i
+                                    class="fa fa-plus"></i> Add Plan</a>
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@ include("header_link.php");  ?>
                                         $cnt++;
                                         $pro_id = $val['product_id'];
                                         $pro_data = $obj->arr("SELECT * FROM products WHERE id='$pro_id'");
-                                    ?>
+                                        ?>
                                         <tr class="holiday-upcoming">
                                             <td><?php echo $cnt; ?></td>
                                             <td><?php echo $val['user_type'] ?></td>
@@ -67,21 +67,28 @@ include("header_link.php");  ?>
                                             <td><?php echo $val['price'] ?></td>
                                             <td class="text-right">
                                                 <div class="dropdown dropdown-action">
-                                                    <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+                                                    <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
+                                                        aria-expanded="false"><i class="material-icons">more_vert</i></a>
                                                     <div class="dropdown-menu dropdown-menu-right">
-                                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_holiday<?php echo $cnt; ?>"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_holiday<?php echo $cnt; ?>"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                        <a class="dropdown-item" href="#" data-toggle="modal"
+                                                            data-target="#edit_holiday<?php echo $cnt; ?>"><i
+                                                                class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                        <a class="dropdown-item" href="#" data-toggle="modal"
+                                                            data-target="#delete_holiday<?php echo $cnt; ?>"><i
+                                                                class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
                                         <!-- Edit Menu Modal -->
-                                        <div class="modal custom-modal fade" id="edit_holiday<?php echo $cnt; ?>" role="dialog">
+                                        <div class="modal custom-modal fade" id="edit_holiday<?php echo $cnt; ?>"
+                                            role="dialog">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title">Edit Individual Price</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
@@ -89,11 +96,18 @@ include("header_link.php");  ?>
                                                         <form class="edit_category" id="<?= $val['id'] ?>">
                                                             <div class="form-group">
                                                                 <label>User Type <span class="text-danger">*</span></label>
-                                                                <select name="user_type" id="user_type" class="form-control">
-                                                                    <option value="Agent" <?= ($val['user_type']=='Agent')?'selected':''; ?>>Agent</option>
-                                                                    <option value="Distributer" <?= ($val['user_type']=='Distributer')?'selected':''; ?>>Distributer</option>
-                                                                    <option value="Dealer" <?= ($val['user_type']=='Dealer')?'selected':''; ?>>Dealer</option>
-                                                                    <option value="Retailer" <?= ($val['user_type']=='Retailer')?'selected':''; ?>>Retailer</option>
+                                                                <select name="user_type" id="user_type"
+                                                                    class="form-control">
+                                                                    <option value="Agent"
+                                                                        <?= ($val['user_type'] == 'Agent') ? 'selected' : ''; ?>>
+                                                                        Agent</option>
+                                                                    <option value="Distributer"
+                                                                        <?= ($val['user_type'] == 'Distributer') ? 'selected' : ''; ?>>Distributer</option>
+                                                                    <option value="Dealer"
+                                                                        <?= ($val['user_type'] == 'Dealer') ? 'selected' : ''; ?>>
+                                                                        Dealer</option>
+                                                                    <option value="Retailer"
+                                                                        <?= ($val['user_type'] == 'Retailer') ? 'selected' : ''; ?>>Retailer</option>
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
@@ -102,19 +116,23 @@ include("header_link.php");  ?>
                                                                     <?php
                                                                     $pro_fet = $obj->fetch("SELECT * FROM products");
                                                                     foreach ($pro_fet as $pro_val) {
-                                                                    ?>
-                                                                        <option value="<?= $pro_val['id'] ?>" <?= ($val['product_id']==$pro_val['id'])?'selected':''; ?>><?= $pro_val['name'] ?></option>
+                                                                        ?>
+                                                                        <option value="<?= $pro_val['id'] ?>"
+                                                                            <?= ($val['product_id'] == $pro_val['id']) ? 'selected' : ''; ?>><?= $pro_val['name'] ?></option>
                                                                     <?php } ?>
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Price <span class="text-danger">*</span></label>
-                                                                <input class="form-control" type="text" name="price" id="price" value="<?= $val['price'] ?>"/>
+                                                                <input class="form-control" type="text" name="price"
+                                                                    id="price" value="<?= $val['price'] ?>" />
                                                             </div>
 
                                                             <div class="submit-section">
                                                                 <input type="hidden" value="<?= $val['id'] ?>" name="id">
-                                                                <button type="submit" name="submit" id="edit_menu_btn<?php echo $val['id']; ?>" class="btn btn-primary edit_menu_btn">
+                                                                <button type="submit" name="submit"
+                                                                    id="edit_menu_btn<?php echo $val['id']; ?>"
+                                                                    class="btn btn-primary edit_menu_btn">
                                                                     Submit
                                                                 </button>
                                                             </div>
@@ -126,7 +144,8 @@ include("header_link.php");  ?>
                                         </div>
                                         <!-- / End Edit Menu Modal -->
                                         <!-- Delete Menu Modal -->
-                                        <div class="modal custom-modal fade" id="delete_holiday<?php echo $cnt; ?>" role="dialog">
+                                        <div class="modal custom-modal fade" id="delete_holiday<?php echo $cnt; ?>"
+                                            role="dialog">
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <div class="modal-body">
@@ -137,14 +156,20 @@ include("header_link.php");  ?>
                                                         <div class="modal-btn delete-action">
                                                             <div class="row">
                                                                 <div class="col-6">
-                                                                    <button class="btn btn-primary continue-btn" value="<?php echo $val['id']; ?>" id="dlt_btn<?php echo $val['id']; ?>" style="width: 100%;">Delete</button>
+                                                                    <button class="btn btn-primary continue-btn"
+                                                                        value="<?php echo $val['id']; ?>"
+                                                                        id="dlt_btn<?php echo $val['id']; ?>"
+                                                                        style="width: 100%;">Delete</button>
                                                                 </div>
                                                                 <div class="col-6">
-                                                                    <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
+                                                                    <a href="javascript:void(0);" data-dismiss="modal"
+                                                                        class="btn btn-primary cancel-btn">Cancel</a>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
-                                                                <div class="col-12" align="center" style="padding-top: 15px;"><span id="preview2"></span></div>
+                                                                <div class="col-12" align="center"
+                                                                    style="padding-top: 15px;"><span id="preview2"></span>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -156,7 +181,7 @@ include("header_link.php");  ?>
 
                                         <!-- Delete Script Modal -->
                                         <script>
-                                            $("#dlt_btn<?php echo $val['id']; ?>").click("submit", function() {
+                                            $("#dlt_btn<?php echo $val['id']; ?>").click("submit", function () {
                                                 var dlt_btn = $(this).val();
                                                 var flag = true;
 
@@ -174,13 +199,13 @@ include("header_link.php");  ?>
                                                         data: {
                                                             dlt_btn: dlt_btn
                                                         },
-                                                        success: function(data) {
+                                                        success: function (data) {
                                                             //var result=JSON.parse(data);
                                                             //alert(data);
                                                             $("#preview2").html(data);
                                                             //alert("success");
                                                             //location.reload();
-                                                            setTimeout(function() {
+                                                            setTimeout(function () {
                                                                 setTimeout(location.reload.bind(location), 1500);
                                                             }, 1000);
                                                         },
@@ -249,7 +274,7 @@ include("header_link.php");  ?>
 
 </html>
 <script>
-    $('#add_category').on("submit", function(e) {
+    $('#add_category').on("submit", function (e) {
         e.preventDefault();
         $.ajax({
             url: "add-individual.php",
@@ -258,10 +283,10 @@ include("header_link.php");  ?>
             cache: false,
             contentType: false,
             processData: false,
-            beforeSend: function() {
+            beforeSend: function () {
                 $('#submit').html('Processing...');
             },
-            success: function(data) {
+            success: function (data) {
                 $('#submit').html('Submit');
                 if (data == 'ok') {
                     $('.preview').html('<p class="alert alert-success">Successfully Saved</p>');
@@ -274,7 +299,7 @@ include("header_link.php");  ?>
     });
 </script>
 <script type="text/javascript">
-    $("#edit_file").on("change", function(e) {
+    $("#edit_file").on("change", function (e) {
         e.preventDefault();
         var src = URL.createObjectURL(event.target.files[0]);
         //alert(src);
@@ -282,7 +307,7 @@ include("header_link.php");  ?>
     });
 </script>
 <script>
-    $('.edit_category').on("submit", function(e) {
+    $('.edit_category').on("submit", function (e) {
         e.preventDefault();
         const id = $('.edit_category').attr('id');
         $.ajax({
@@ -292,10 +317,10 @@ include("header_link.php");  ?>
             cache: false,
             contentType: false,
             processData: false,
-            beforeSend: function() {
+            beforeSend: function () {
                 $('#edit_menu_btn' + id).html('Processing...');
             },
-            success: function(data) {
+            success: function (data) {
                 $('#edit_menu_btn' + id).html('Submit');
                 if (data == 'ok') {
                     $('.err_msg' + id).html('<p class="alert alert-success">Successfully Saved</p>');

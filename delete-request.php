@@ -10,15 +10,14 @@
     include("header_link.php");  ?>
 
  <body>
-     <?php
-        //database file link
-        include("config.php");
-        include("header.php");
-       
-        $assetImgUrl = "https://mehndipvc.shop/api/assets/";
-        ?>
      <!-- Main Wrapper -->
      <div class="main-wrapper">
+        <?php
+        //database file link
+        include("config.php");
+        include("header.php"); 
+        $assetImgUrl = "https://mehndipvc.shop/api/assets/";
+        ?>
          <!-- Page Wrapper -->
          <div class="page-wrapper">
              <!-- Page Content -->

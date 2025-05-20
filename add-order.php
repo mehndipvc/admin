@@ -1,11 +1,10 @@
  <?php
-    session_start();
-    if(empty($_SESSION['username']))
-    {
-        echo '<script>window.location.href="login.php"</script>';
-    }
-    $assetImgUrl = "https://mehndipvc.shop/api/assets/";
-    ?>
+ session_start();
+ if (empty($_SESSION['username'])) {
+     echo '<script>window.location.href="login.php"</script>';
+ }
+ $assetImgUrl = "https://mehndipvc.shop/api/assets/";
+ ?>
 <!DOCTYPE html>
 <html>
 <?php //header link
@@ -13,12 +12,6 @@ include("header_link.php"); ?>
 <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"/>
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <body>
-
-
-<?php
-include("config.php");
-include("header.php");
-?>
 <style>
     .select2-container--default .select2-selection--single .select2-selection__arrow {
         top:10px !important;
@@ -31,6 +24,10 @@ include("header.php");
 </style>
         <!-- Main Wrapper -->
         <div class="main-wrapper">
+            <?php
+            include("config.php");
+            include("header.php");
+            ?>
             <!-- Page Wrapper -->
             <div class="page-wrapper">
                 <!-- Page Content -->
@@ -51,8 +48,8 @@ include("header.php");
                         </div>
                     </div>
                     <?php
-                    
-                    $old=$val['image'];?>
+
+                    $old = $val['image']; ?>
                     <!-- /Page Header -->
                     <script src="js/jquery-3.2.1.min.js"></script>
                     <div class="row">
@@ -64,11 +61,11 @@ include("header.php");
                                      <select class="form-control" name="user_id" id="user-select">
                                          <option value="">--Select- -</option>
                                          <?php
-                                            $cat_fetch = $obj->fetch("SELECT * FROM users");
-                                            foreach ($cat_fetch as $cval) {
-                                            ?>
-                                             <option value="<?= $cval['user_id'] ?>"><?= $cval['name'] ?> [<?= $cval['user_type'] ?>]</option>
-                                         <?php  } ?>
+                                         $cat_fetch = $obj->fetch("SELECT * FROM users");
+                                         foreach ($cat_fetch as $cval) {
+                                             ?>
+                                                                 <option value="<?= $cval['user_id'] ?>"><?= $cval['name'] ?> [<?= $cval['user_type'] ?>]</option>
+                                         <?php } ?>
                                      </select>
                                  </div>
                                  
@@ -78,10 +75,10 @@ include("header.php");
                                         <label>Product</label>
                                         <select class="form-control" id="product-select1" name="item[]">
                                             <?php
-                                            $fetch=$obj->fetch("SELECT * FROM `items`");
-                                            foreach($fetch as $val){
-                                            ?>
-                                            <option value="<?= $val['id']?>"><?= $val['name']?></option>
+                                            $fetch = $obj->fetch("SELECT * FROM `items`");
+                                            foreach ($fetch as $val) {
+                                                ?>
+                                                                <option value="<?= $val['id'] ?>"><?= $val['name'] ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -119,12 +116,12 @@ include("header.php");
             </div>
         </div>
         <?php
-//footer link
-include("footer_link.php");
-//footer
-include("footer.php");
+        //footer link
+        include("footer_link.php");
+        //footer
+        include("footer.php");
 
-?>
+        ?>
     </body>
 </html>
 <script type="text/javascript">
@@ -180,8 +177,8 @@ include("footer.php");
           html_code += '<div class="form-group col-sm-6 ro_input' + count + '">';
           html_code += '<label>Product</label>';
           html_code += '<select class="form-control product-select" id="product-select' + count + '" name="item[]">';
-          <?php foreach($fetch as $val) { ?>
-          html_code += '<option value="<?= $val['id'] ?>"><?= $val['name'] ?></option>';
+          <?php foreach ($fetch as $val) { ?>
+                              html_code += '<option value="<?= $val['id'] ?>"><?= $val['name'] ?></option>';
           <?php } ?>
           html_code += '</select>';
           html_code += '</div>';

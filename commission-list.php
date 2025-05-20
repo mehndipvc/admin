@@ -7,16 +7,16 @@ if (empty($_SESSION['username'])) {
 <!DOCTYPE html>
 <html>
 <?php //header link
-include("header_link.php");  ?>
+include("header_link.php"); ?>
 
 <body>
-    <?php
-    //database file link
-    include("config.php");
-    include("header.php");
-    ?>
     <!-- Main Wrapper -->
     <div class="main-wrapper">
+        <?php
+        //database file link
+        include("config.php");
+        include("header.php");
+        ?>
         <!-- Page Wrapper -->
         <div class="page-wrapper">
             <!-- Page Content -->
@@ -37,7 +37,7 @@ include("header_link.php");  ?>
                 <script src="js/jquery-3.2.1.min.js"></script>
                 <div class="row">
                     <div class="col-sm-12 mb-3 com-history">
-                        
+
                     </div>
                     <div class="col-md-12">
                         <div class="table-responsive">
@@ -56,20 +56,21 @@ include("header_link.php");  ?>
                                     <?php
                                     $cnt = 0;
                                     $selct = $obj->fetch("SELECT * FROM users WHERE name!='Admin'");
-                                    
+
                                     foreach ($selct as $val) {
                                         $cnt++;
-                                        $id=$val['id'];
-                                        $user_id=$val['user_id'];
-                                    ?>
+                                        $id = $val['id'];
+                                        $user_id = $val['user_id'];
+                                        ?>
                                         <tr class="holiday-upcoming">
-                                            <td><?=$cnt?></td>
+                                            <td><?= $cnt ?></td>
                                             <td><?= $val['user_type'] ?></td>
                                             <td><?= $val['name'] ?></td>
                                             <td><?= $val['mobile'] ?></td>
                                             <td><?= $val['email'] ?></td>
                                             <td>
-                                               <span style="font-family:calibri;">₹</span> <?= $val['wallet']!=''?$val['wallet']:0 ?>
+                                                <span style="font-family:calibri;">₹</span>
+                                                <?= $val['wallet'] != '' ? $val['wallet'] : 0 ?>
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -90,56 +91,54 @@ include("header_link.php");  ?>
 
     ?>
     <script>
-    function fetchCommissionDetails(id,userId){
+        function fetchCommissionDetails(id, userId) {
 
-        $.ajax({
-            url: "https://mehndipvc.shop/api/fetch-indivisual-price.php",
-            type: "post",
-            data: { id: id, user_id: userId },
-            beforeSend: function () {
-                $(this).html('Processing...');
-            },
-            success: function (data) {
-                var data = JSON.parse(data);
-                var sum = 0;
-                data.forEach(function(item) {
-                    sum += item.earning_amount;
-                });
-                $(this).html('View Commission');
-                $('.com-history').html(data);
-                $('.show-commission'+id).html('<span style="font-family:cambria;font-size: 16px;font-weight: 600;">₹ ' + sum + '</span>');
-                
-                // setTimeout(location.reload.bind(location), 1500);
-            }
-        });
-    }
-    
-            $('.editSubmit').on("click", function(){
-               let id = $(this).attr("id");
-               let status = $('#staTus'+id).val();
-               $.ajax({
-                   url:"edit-order.php",
-                   type:"post",
-                   data:{id:id,status:status},
-                   beforeSend:function()
-                   {
-                       $(this).html('Processing...');
-                   },
-                   success: function(data)
-                   {
-                       $(this).html('Submit');
-                       $('.errorMsg'+id).html(data);
-                       setTimeout(location.reload.bind(location), 1500);
-                   }
-               });
+            $.ajax({
+                url: "https://mehndipvc.shop/api/fetch-indivisual-price.php",
+                type: "post",
+                data: { id: id, user_id: userId },
+                beforeSend: function () {
+                    $(this).html('Processing...');
+                },
+                success: function (data) {
+                    var data = JSON.parse(data);
+                    var sum = 0;
+                    data.forEach(function (item) {
+                        sum += item.earning_amount;
+                    });
+                    $(this).html('View Commission');
+                    $('.com-history').html(data);
+                    $('.show-commission' + id).html('<span style="font-family:cambria;font-size: 16px;font-weight: 600;">₹ ' + sum + '</span>');
+
+                    // setTimeout(location.reload.bind(location), 1500);
+                }
             });
-            
-            
-            $(document).ready(function(){
-              var table = $('#commission-history').DataTable({
+        }
+
+        $('.editSubmit').on("click", function () {
+            let id = $(this).attr("id");
+            let status = $('#staTus' + id).val();
+            $.ajax({
+                url: "edit-order.php",
+                type: "post",
+                data: { id: id, status: status },
+                beforeSend: function () {
+                    $(this).html('Processing...');
+                },
+                success: function (data) {
+                    $(this).html('Submit');
+                    $('.errorMsg' + id).html(data);
+                    setTimeout(location.reload.bind(location), 1500);
+                }
+            });
+        });
+
+
+        $(document).ready(function () {
+            var table = $('#commission-history').DataTable({
                 "searching": true,
             });
-         });
+        });
     </script>
 </body>
 

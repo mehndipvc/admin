@@ -11,10 +11,10 @@ if (empty($_SESSION['username'])) {
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 
 <body>
-    <?php include("config.php"); ?>
-    <?php include("header.php"); ?>
     <!-- Main Wrapper -->
     <div class="main-wrapper">
+        <?php include("config.php"); ?>
+        <?php include("header.php"); ?>
         <!-- Page Wrapper -->
         <div class="page-wrapper">
             <!-- Page Content -->
@@ -61,7 +61,8 @@ if (empty($_SESSION['username'])) {
                                 <div class="col-sm-2">
                                     <label>Billing Date<sup>*</sup></label>
                                     <div class="form-group">
-                                        <input type="date" name="date" id="" class="form-control" value="<?php echo date("Y-m-d") ?>">
+                                        <input type="date" name="date" id="" class="form-control"
+                                            value="<?php echo date("Y-m-d") ?>">
                                     </div>
                                 </div>
                                 <div class="col-sm-2">
@@ -103,7 +104,8 @@ if (empty($_SESSION['username'])) {
                                 <div class="col-sm-2">
                                     <label>Dated</label>
                                     <div class="form-group">
-                                        <input type="date" name="dated" id="" class="form-control" value="<?php echo date("Y-m-d") ?>">
+                                        <input type="date" name="dated" id="" class="form-control"
+                                            value="<?php echo date("Y-m-d") ?>">
                                     </div>
                                 </div>
                                 <div class="col-sm-2">
@@ -165,7 +167,8 @@ if (empty($_SESSION['username'])) {
                             <div class="row">
                                 <div class="col-sm-12 table-box">
                                     <!-- <table class="table table-stripted table-bordered" id="cr_tb"> -->
-                                    <table style="height:150px;width:100%;border:1px solid black" class="table-bordered table-stripted" id="cr_tb">
+                                    <table style="height:150px;width:100%;border:1px solid black"
+                                        class="table-bordered table-stripted" id="cr_tb">
                                         <thead>
                                             <tr style="height:50px">
                                                 <th>Sl</th>
@@ -196,15 +199,24 @@ if (empty($_SESSION['username'])) {
                                             <tr>
                                                 <td>1</td>
                                                 <td><input type="text" name="service[]"></td>
-                                                <td><input type="text" style="width: 50px;" id="item1" name="item[]" class="calculate"></td>
-                                                <td><input type="text" style="width: 100px;" id="price1" name="price[]" class="calculate"></td>
-                                                <td><input type="text" style="width: 50px;" id="dis_rate1" name="dis_rate[]" class="calculate"></td>
-                                                <td><input type="text" style="width: 80px;" id="dis_amt1" name="dis_amt[]" class="calculate" readonly></td>
-                                                <td><input type="text" style="width: 50px;" id="cgst_rate1" name="cgst_rate[]" class="calculate"></td>
-                                                <td><input type="text" style="width: 80px;" id="cgst_amt1" name="cgst_amt[]" class="calculate" readonly></td>
-                                                <td><input type="text" style="width: 50px;" id="sgst_rate1" name="sgst_rate[]" class="calculate"></td>
-                                                <td><input type="text" style="width: 80px;" id="sgst_amt1" name="sgst_amt[]" class="calculate" readonly></td>
-                                                <td><input type="text" style="width: 100px;" id="total1" name="total[]" readonly></td>
+                                                <td><input type="text" style="width: 50px;" id="item1" name="item[]"
+                                                        class="calculate"></td>
+                                                <td><input type="text" style="width: 100px;" id="price1" name="price[]"
+                                                        class="calculate"></td>
+                                                <td><input type="text" style="width: 50px;" id="dis_rate1"
+                                                        name="dis_rate[]" class="calculate"></td>
+                                                <td><input type="text" style="width: 80px;" id="dis_amt1"
+                                                        name="dis_amt[]" class="calculate" readonly></td>
+                                                <td><input type="text" style="width: 50px;" id="cgst_rate1"
+                                                        name="cgst_rate[]" class="calculate"></td>
+                                                <td><input type="text" style="width: 80px;" id="cgst_amt1"
+                                                        name="cgst_amt[]" class="calculate" readonly></td>
+                                                <td><input type="text" style="width: 50px;" id="sgst_rate1"
+                                                        name="sgst_rate[]" class="calculate"></td>
+                                                <td><input type="text" style="width: 80px;" id="sgst_amt1"
+                                                        name="sgst_amt[]" class="calculate" readonly></td>
+                                                <td><input type="text" style="width: 100px;" id="total1" name="total[]"
+                                                        readonly></td>
                                                 <td></td>
                                             </tr>
                                         </tbody>
@@ -212,11 +224,13 @@ if (empty($_SESSION['username'])) {
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="text-right pr-18">
-                                        <b class="text-right">Total Amount: </b><span id="final_amt" name="final_amt"></span>
+                                        <b class="text-right">Total Amount: </b><span id="final_amt"
+                                            name="final_amt"></span>
                                     </div>
                                     <div class="text-center pt-10">
                                         <input type="hidden" name="total_count" id="total_count" value="1">
-                                        <button type="reset" class="btn btn-danger"><i class="fa fa-refresh"></i></button>
+                                        <button type="reset" class="btn btn-danger"><i
+                                                class="fa fa-refresh"></i></button>
                                         <button class="btn btn-primary" id="createBtn">Submit</button>
                                         <a href="javascript:void(0)" class="btn btn-warning" id="add_row">
                                             <i class="fa fa-plus-circle" aria-hidden="true"></i>
@@ -225,7 +239,7 @@ if (empty($_SESSION['username'])) {
                                 </div>
                                 <div class="col-sm-12 msg"></div>
                             </div>
-                        </div>
+                    </div>
                     </form>
                 </div>
             </div>
@@ -238,9 +252,9 @@ if (empty($_SESSION['username'])) {
         $('.summernote').summernote();
     </script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             let count = $('#total_count').val();
-            $('#add_row').on("click", function() {
+            $('#add_row').on("click", function () {
                 count++;
                 let html_code = '';
                 html_code += '<tr id="ro' + count + '">';
@@ -260,7 +274,7 @@ if (empty($_SESSION['username'])) {
                 $('#total_count').val(count);
                 $('#cr_tb tbody').append(html_code);
             });
-            $(document).on('click', '.remove_row', function() {
+            $(document).on('click', '.remove_row', function () {
                 let row_id = $(this).attr("id");
                 let total_amt_rm = $('#total' + row_id).val();
                 let final_amt_rm = $('#final_amt').text();
@@ -327,13 +341,13 @@ if (empty($_SESSION['username'])) {
                 $('#final_amt').text(final_amt);
 
             }
-            $(document).on('keyup', '.calculate', function() {
+            $(document).on('keyup', '.calculate', function () {
                 call_final_total(count);
             });
         });
     </script>
     <script>
-        $('#create-bill').on("submit", function(e) {
+        $('#create-bill').on("submit", function (e) {
             e.preventDefault();
             $.ajax({
                 url: "create-invoice-form.php",
@@ -342,10 +356,10 @@ if (empty($_SESSION['username'])) {
                 cache: false,
                 contentType: false,
                 processData: false,
-                beforeSend: function() {
+                beforeSend: function () {
                     $('#createBtn').html('Processing');
                 },
-                success: function(data) {
+                success: function (data) {
                     $('#createBtn').html('Submit');
                     $('.msg').html(data);
                     $(".alert").delay(3500).fadeOut();
@@ -355,4 +369,5 @@ if (empty($_SESSION['username'])) {
         });
     </script>
 </body>
+
 </html>
