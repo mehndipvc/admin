@@ -4,6 +4,10 @@
         echo '<script>window.location.href="login"</script>';
     }
     ?>
+    <?php
+    //database file link
+    include("config.php");
+    ?>
  <!DOCTYPE html>
  <html>
  <?php //header link
@@ -13,8 +17,6 @@
      <!-- Main Wrapper -->
      <div class="main-wrapper">
         <?php
-        //database file link
-        include("config.php");
         include("header.php");
         $assetImgUrl = "https://mehndipvc.shop/api/assets/";
         ?>

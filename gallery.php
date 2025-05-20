@@ -9,12 +9,12 @@ $assetImgUrl = "https://mehndipvc.shop/api/assets/";
 <html>
 <?php //header link
 include("header_link.php"); ?>
-
-<body>
-    <?php
+<?php
     //database file link
     include("config.php");
     ?>
+
+<body>
     <script src="js/jquery-3.2.1.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <!-- Main Wrapper -->

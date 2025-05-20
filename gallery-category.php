@@ -4,6 +4,7 @@ if (empty($_SESSION['username'])) {
     echo '<script>window.location.href="login"</script>';
 }
 ?>
+<?php include("config.php"); ?>
 <!DOCTYPE html>
 <html>
 <?php //header link
@@ -13,8 +14,6 @@ include("header_link.php"); ?>
     <!-- Main Wrapper -->
     <div class="main-wrapper">
         <?php
-        //database file link
-        include("config.php");
         include("header.php");
         $assetImgUrl = "https://mehndipvc.shop/api/assets/";
         ?>
@@ -108,7 +107,8 @@ include("header_link.php"); ?>
                                                                     name="old_img">
                                                             </div>
                                                             <div class="submit-section">
-                                                                <input type="hidden" value="<?= $val['id'] ?>" name="cat_id">
+                                                                <input type="hidden" value="<?= $val['id'] ?>"
+                                                                    name="cat_id">
                                                                 <button type="submit" name="submit"
                                                                     id="edit_menu_btn<?php echo $val['id']; ?>"
                                                                     class="btn btn-primary edit_menu_btn">

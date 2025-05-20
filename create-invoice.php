@@ -4,6 +4,7 @@ if (empty($_SESSION['username'])) {
     echo '<script>window.location.href="login"</script>';
 }
 ?>
+<?php include("config.php");?>
 <!DOCTYPE html>
 <html>
 <?php include("header_link.php"); ?>
@@ -13,7 +14,6 @@ if (empty($_SESSION['username'])) {
 <body>
     <!-- Main Wrapper -->
     <div class="main-wrapper">
-        <?php include("config.php"); ?>
         <?php include("header.php"); ?>
         <!-- Page Wrapper -->
         <div class="page-wrapper">

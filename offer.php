@@ -4,6 +4,10 @@ if (empty($_SESSION['username'])) {
     echo '<script>window.location.href="login"</script>';
 }
 ?>
+<?php
+//database file link
+include("config.php");
+?>
 <!DOCTYPE html>
 <html>
 <?php //header link
@@ -13,8 +17,6 @@ include("header_link.php"); ?>
     <!-- Main Wrapper -->
     <div class="main-wrapper">
         <?php
-        //database file link
-        include("config.php");
         include("header.php");
         ?>
         <!-- Page Wrapper -->
@@ -110,7 +112,8 @@ include("header_link.php"); ?>
                                                                         ?>
                                                                         <option value="<?= $pro_val['id'] ?>"
                                                                             <?= ($pro_val['id'] == $val['item_id']) ? 'selected' : ''; ?>>
-                                                                            <?= $pro_val['name'] ?></option>
+                                                                            <?= $pro_val['name'] ?>
+                                                                        </option>
                                                                     <?php } ?>
                                                                 </select>
                                                             </div>

@@ -4,6 +4,10 @@ if (empty($_SESSION['username'])) {
     echo '<script>window.location.href="login"</script>';
 }
 ?>
+<?php
+//database file link
+include("config.php");
+?>
 <!DOCTYPE html>
 <html>
 <?php //header link
@@ -37,8 +41,6 @@ include("header_link.php"); ?>
     <!-- Main Wrapper -->
     <div class="main-wrapper">
         <?php
-        //database file link
-        include("config.php");
         include("header.php");
         ?>
         <!-- Page Wrapper -->
@@ -228,7 +230,8 @@ include("header_link.php"); ?>
                                                                 <select name="user_idEdit" class="form-control"
                                                                     id="userList<?= $val['id'] ?>">
                                                                     <option value="<?php echo $user_data['user_id'] ?>">
-                                                                        <?php echo $user_data['name'] ?></option>
+                                                                        <?php echo $user_data['name'] ?>
+                                                                    </option>
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
@@ -242,7 +245,8 @@ include("header_link.php"); ?>
                                                                         $cat_id = $val['category'];
                                                                         ?>
                                                                         <option value="<?= $cat_val['id'] ?>" <?php echo ($cat_id === $cat_val['id']) ? 'selected' : ''; ?>>
-                                                                            <?= $cat_val['name'] ?></option>
+                                                                            <?= $cat_val['name'] ?>
+                                                                        </option>
                                                                     <?php } ?>
                                                                 </select>
                                                             </div>

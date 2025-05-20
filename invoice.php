@@ -4,6 +4,10 @@ if (empty($_SESSION['username'])) {
     echo '<script>window.location.href="login"</script>';
 }
 ?>
+<?php
+//database file link
+include("config.php");
+?>
 <!DOCTYPE html>
 <html>
 <?php //header link
@@ -15,8 +19,6 @@ include("header_link.php"); ?>
     <!-- Main Wrapper -->
     <div class="main-wrapper">
         <?php
-        //database file link
-        include("config.php");
         include("header.php");
         ?>
         <!-- Page Wrapper -->

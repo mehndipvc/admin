@@ -3,14 +3,13 @@ include("config.php");
 include("add-watermark.php");
 // print_r($_POST);
 // exit;
-if(!empty($_POST['status']) && !empty($_POST['id']) && !empty($_POST['cat_id']))
-{
-    $status=$_POST['status'];
-    $id=$_POST['id'];
-    $cat_id=$_POST['cat_id'];
-    $old_image=$_POST['old_image'];
+if (!empty($_POST['status']) && !empty($_POST['id']) && !empty($_POST['cat_id'])) {
+    $status = $_POST['status'];
+    $id = $_POST['id'];
+    $cat_id = $_POST['cat_id'];
+    $old_image = $_POST['old_image'];
 
-    
+
     if (!empty($_FILES["image_new"]['name'][0])) {
         $files = $_FILES["image_new"];
         $allowed = array('png', 'jpg', 'jpeg', 'webp');
@@ -46,41 +45,32 @@ if(!empty($_POST['status']) && !empty($_POST['id']) && !empty($_POST['cat_id']))
             $validImageNames[] = $newfile;
         }
         $validImageNamesString = implode(', ', $validImageNames);
-        
+
         $oldImageNamesArray = explode(', ', $old_image);
         foreach ($oldImageNamesArray as $oldImageName) {
-        $imageFilePath = "../api/assets/" . $oldImageName;
-        unlink($imageFilePath);
+            $imageFilePath = "../api/assets/" . $oldImageName;
+            unlink($imageFilePath);
         }
     }
-    $check=$obj->num("SELECT id FROM items_images WHERE id='$id'");
-    if($check!=0)
-    {
+    $check = $obj->num("SELECT id FROM items_images WHERE id='$id'");
+    if ($check != 0) {
         $gallery_code = rand(00000, 99999);
         if (!empty($_FILES["image_new"]['name'][0])) {
-            $update=$obj->query("UPDATE items_images SET gallery_code='$gallery_code',status='$status',cat_id='$cat_id',filename='$validImageNamesString' WHERE id='$id'");
-            if($update)
-            {
+            $update = $obj->query("UPDATE items_images SET gallery_code='$gallery_code',status='$status',cat_id='$cat_id',filename='$validImageNamesString' WHERE id='$id'");
+            if ($update) {
+                echo '<p class="alert alert-success">Successfully Updated</p>';
+            }
+        } else {
+
+            $update = $obj->query("UPDATE items_images SET gallery_code='$gallery_code',status='$status',cat_id='$cat_id',filename='$old_image' WHERE id='$id'");
+            if ($update) {
                 echo '<p class="alert alert-success">Successfully Updated</p>';
             }
         }
-        else
-        {
-           
-            $update=$obj->query("UPDATE items_images SET gallery_code='$gallery_code',status='$status',cat_id='$cat_id',filename='$old_image' WHERE id='$id'");
-            if($update)
-            {
-                echo '<p class="alert alert-success">Successfully Updated</p>';
-            }
-        }
-    }
-    else
-    {
+    } else {
         echo '<p class="alert alert-danger">Error Faild Submission</p>';
     }
-}
-else
-{
+} else {
     echo '<p class="alert alert-danger">Empty Field</p>';
 }
 ?>

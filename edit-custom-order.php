@@ -5,6 +5,7 @@ if (empty($_SESSION['username'])) {
 }
 $assetImgUrl = "https://mehndipvc.shop/api/assets/";
 ?>
+<?php include("config.php"); ?>
 <!DOCTYPE html>
 <html>
 <?php //header link
@@ -36,7 +37,6 @@ include("header_link.php"); ?>
     <!-- Main Wrapper -->
     <div class="main-wrapper">
         <?php
-        include("config.php");
         include("header.php");
         include('addl_functions.php');
 
@@ -86,7 +86,8 @@ include("header_link.php"); ?>
                                                     ?>
                                                     <option value="<?= $cval['user_id'] ?>"
                                                         <?= $val_order['user_id'] == $cval['user_id'] ? 'selected' : '' ?>>
-                                                        <?= $cval['name'] ?> [<?= $cval['user_type'] ?>]</option>
+                                                        <?= $cval['name'] ?> [<?= $cval['user_type'] ?>]
+                                                    </option>
                                                 <?php } ?>
                                             </select>
                                         </div>

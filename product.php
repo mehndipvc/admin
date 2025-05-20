@@ -5,6 +5,10 @@ if (empty($_SESSION['username'])) {
 }
 $assetImgUrl = "https://mehndipvc.shop/api/assets/";
 ?>
+<?php
+//database file link
+include("config.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +36,6 @@ $assetImgUrl = "https://mehndipvc.shop/api/assets/";
         // header
         include("header.php");
         ?>
-        <?php include("config.php"); ?>
         <div class="page-wrapper">
             <div class="content container-fluid">
                 <div class="page-header">

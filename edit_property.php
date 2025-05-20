@@ -4,6 +4,7 @@ if (empty($_SESSION['username'])) {
     echo '<script>window.location.href="login.php"</script>';
 }
 ?>
+<?php include("config.php"); ?>
 <!DOCTYPE html>
 <html>
 <?php //header link
@@ -14,10 +15,6 @@ include("header_link.php"); ?>
 <body>
     <!-- Main Wrapper -->
     <div class="main-wrapper">
-        <?php
-        //database file link
-        include("config.php");
-        ?>
         <?php
         // header
         include("header.php");
@@ -65,7 +62,8 @@ include("header_link.php"); ?>
                                                     $fetch = $obj->fetch('SELECT * from brand');
                                                     foreach ($fetch as $va) { ?>
                                                         <option value="<?php echo $va['id'] ?>" <?php echo ($va['id'] == $val['location']) ? 'selected' : ''; ?>>
-                                                            <?php echo $va['brand'] ?></option>
+                                                            <?php echo $va['brand'] ?>
+                                                        </option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -80,7 +78,8 @@ include("header_link.php"); ?>
                                                     $fet = $obj->fetch("SELECT * From model WHERE id='$mid'");
                                                     foreach ($fet as $vaf) { ?>
                                                         <option value="<?php echo $vaf['id'] ?>" <?php echo ($vaf['id'] == $val['sub_location']) ? 'selected' : ''; ?>>
-                                                            <?php echo $vaf['model'] ?></option>
+                                                            <?php echo $vaf['model'] ?>
+                                                        </option>
 
                                                         <?php
                                                     } ?>
@@ -101,7 +100,8 @@ include("header_link.php"); ?>
                                                     foreach ($fetch_bhk as $val_bhk) {
                                                         ?>
                                                         <option value="<?php echo $val_bhk['id'] ?>" <?php echo ($val_bhk['id'] == $val['bhk']) ? 'selected' : ''; ?>>
-                                                            <?php echo $val_bhk['year'] ?></option>
+                                                            <?php echo $val_bhk['year'] ?>
+                                                        </option>
                                                     <?php } ?>
                                                 </select>
                                             </div>

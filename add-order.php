@@ -5,6 +5,8 @@
  }
  $assetImgUrl = "https://mehndipvc.shop/api/assets/";
  ?>
+ <?php
+ include("config.php"); ?>
 <!DOCTYPE html>
 <html>
 <?php //header link
@@ -25,7 +27,6 @@ include("header_link.php"); ?>
         <!-- Main Wrapper -->
         <div class="main-wrapper">
             <?php
-            include("config.php");
             include("header.php");
             ?>
             <!-- Page Wrapper -->
@@ -64,7 +65,7 @@ include("header_link.php"); ?>
                                          $cat_fetch = $obj->fetch("SELECT * FROM users");
                                          foreach ($cat_fetch as $cval) {
                                              ?>
-                                                                 <option value="<?= $cval['user_id'] ?>"><?= $cval['name'] ?> [<?= $cval['user_type'] ?>]</option>
+                                                                     <option value="<?= $cval['user_id'] ?>"><?= $cval['name'] ?> [<?= $cval['user_type'] ?>]</option>
                                          <?php } ?>
                                      </select>
                                  </div>
@@ -78,7 +79,7 @@ include("header_link.php"); ?>
                                             $fetch = $obj->fetch("SELECT * FROM `items`");
                                             foreach ($fetch as $val) {
                                                 ?>
-                                                                <option value="<?= $val['id'] ?>"><?= $val['name'] ?></option>
+                                                                    <option value="<?= $val['id'] ?>"><?= $val['name'] ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -178,7 +179,7 @@ include("header_link.php"); ?>
           html_code += '<label>Product</label>';
           html_code += '<select class="form-control product-select" id="product-select' + count + '" name="item[]">';
           <?php foreach ($fetch as $val) { ?>
-                              html_code += '<option value="<?= $val['id'] ?>"><?= $val['name'] ?></option>';
+                                  html_code += '<option value="<?= $val['id'] ?>"><?= $val['name'] ?></option>';
           <?php } ?>
           html_code += '</select>';
           html_code += '</div>';
