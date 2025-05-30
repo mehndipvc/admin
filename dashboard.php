@@ -81,7 +81,7 @@ if (empty($_SESSION['username'])) {
 									<span>Users</span>
 								</div>
 							</div>
-							<a href="users" class="top_box_link"></a>
+							<a href="user-list" class="top_box_link"></a>
 						</div>
 					</div>
 
@@ -98,7 +98,7 @@ if (empty($_SESSION['username'])) {
 									<span>Orders</span>
 								</div>
 							</div>
-							<a href="orders" class="top_box_link"></a>
+							<a href="order" class="top_box_link"></a>
 						</div>
 					</div>
 
