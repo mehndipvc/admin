@@ -115,7 +115,7 @@ if (empty($_SESSION['username'])) {
 									<span>Agent</span>
 								</div>
 							</div>
-							<a href="agent" class="top_box_link"></a>
+							<a href="user-list.php?type=Agent" class="top_box_link"></a>
 						</div>
 					</div>
 
@@ -132,7 +132,7 @@ if (empty($_SESSION['username'])) {
 									<span>CNF</span>
 								</div>
 							</div>
-							<a href="product" class="top_box_link"></a>
+							<a href="user-list.php?type=CNF" class="top_box_link"></a>
 						</div>
 					</div>
 
@@ -149,7 +149,7 @@ if (empty($_SESSION['username'])) {
 									<span>Distributor</span>
 								</div>
 							</div>
-							<a href="distributor" class="top_box_link"></a>
+							<a href="user-list.php?type=Distributor" class="top_box_link"></a>
 						</div>
 					</div>
 
@@ -166,7 +166,7 @@ if (empty($_SESSION['username'])) {
 									<span>Dealer</span>
 								</div>
 							</div>
-							<a href="dealer" class="top_box_link"></a>
+							<a href="order.php?type=Dealer" class="top_box_link"></a>
 						</div>
 					</div>
 
@@ -183,7 +183,7 @@ if (empty($_SESSION['username'])) {
 									<span>Customer</span>
 								</div>
 							</div>
-							<a href="customer" class="top_box_link"></a>
+							<a href="user-list.php?type=Customer" class="top_box_link"></a>
 						</div>
 					</div>
 
@@ -200,7 +200,7 @@ if (empty($_SESSION['username'])) {
 									<span>Picture Gallery</span>
 								</div>
 							</div>
-							<a href="product" class="top_box_link"></a>
+							<a href="gallery" class="top_box_link"></a>
 						</div>
 					</div>
 
