@@ -25,9 +25,12 @@ include("config.php");
     <!-- Fancybox v3 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
 
-    <!-- jQuery and JS -->
+   <!-- Required JS scripts (ORDER matters!) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 
 <body>
@@ -55,8 +58,6 @@ include("config.php");
                         </div>
                     </div>
                 </div>
-
-                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
