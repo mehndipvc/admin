@@ -26,23 +26,21 @@ if (!empty($_POST['name']) && !empty($_FILES['file']['name'])) {
 
 			$newfile = $name . '.' . end($temp);
 
-			$folder = "/var/www/mlmApp/api/assets/" . $newfile;
+			$folder = "../api/assets/" . $newfile;
 
 
 			if (move_uploaded_file($tmp, $folder)) {
-    echo 'ok';
-} else {
-    echo '<p class="alert alert-danger">Image upload failed</p>';
+				$query = $obj->query("INSERT INTO rate_chart(file,file_path,name,user_id) VALUES ('$folder','$newfile','$name','$user_id')");
 
-    // Debugging
-    echo "<pre>";
-    echo "Temp file: " . $tmp . "\n";
-    echo "Target file: " . $folder . "\n";
-    echo "File exists in temp? " . (file_exists($tmp) ? 'Yes' : 'No') . "\n";
-    echo "Is folder writable? " . (is_writable(dirname($folder)) ? 'Yes' : 'No') . "\n";
-    print_r(error_get_last());
-    echo "</pre>";
-}
+				if ($query) {
+					echo 'ok';
+				} else {
+					echo '<p class="alert alert-danger">Error something wrong!</p>';
+				}
+			} else {
+				echo '<p class="alert alert-danger">Image upload failed</p>';
+			}
+
 		} else {
 			echo '<p class="alert alert-danger">File format is not supported</p>';
 		}
