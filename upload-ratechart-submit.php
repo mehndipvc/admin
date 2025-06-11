@@ -26,7 +26,7 @@ if (!empty($_POST['name']) && !empty($_FILES['file']['name'])) {
 
 			$newfile = $name . '.' . end($temp);
 
-			$folder = "../api/assets/" . $newfile;
+			$folder = "/var/www/mlmApp/api/assets/" . $newfile;
 
 
 			if (move_uploaded_file($tmp, $folder)) {
