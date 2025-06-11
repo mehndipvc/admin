@@ -30,14 +30,20 @@ if (!empty($_POST['name']) && !empty($_FILES['file']['name'])) {
 
 
 			if (move_uploaded_file($tmp, $folder)) {
-				$query = $obj->query("INSERT INTO rate_chart(file,file_path,name,user_id) VALUES ('$folder','$newfile','$name','$user_id')");
+    echo 'ok';
+} else {
+    echo '<p class="alert alert-danger">Image upload failed</p>';
 
-				if ($query) {
-					echo 'ok';
-				} else {
-					echo '<p class="alert alert-danger">Error something wrong!</p>';
-				}
-			} else {
+    // Debugging
+    echo "<pre>";
+    echo "Temp file: " . $tmp . "\n";
+    echo "Target file: " . $folder . "\n";
+    echo "File exists in temp? " . (file_exists($tmp) ? 'Yes' : 'No') . "\n";
+    echo "Is folder writable? " . (is_writable(dirname($folder)) ? 'Yes' : 'No') . "\n";
+    print_r(error_get_last());
+    echo "</pre>";
+}
+ else {
 				echo '<p class="alert alert-danger">Image upload failed</p>';
 			}
 
