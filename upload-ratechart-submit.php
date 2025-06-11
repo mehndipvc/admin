@@ -43,10 +43,6 @@ if (!empty($_POST['name']) && !empty($_FILES['file']['name'])) {
     print_r(error_get_last());
     echo "</pre>";
 }
- else {
-				echo '<p class="alert alert-danger">Image upload failed</p>';
-			}
-
 		} else {
 			echo '<p class="alert alert-danger">File format is not supported</p>';
 		}
