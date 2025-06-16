@@ -131,7 +131,7 @@ include("header_link.php"); ?>
                                             <td><?php echo $data_cat['category']; ?></td>
                                             <td>
                                                 <div>
-                                                    <a href="https://mehndipvc.com/api/assets/<?php echo urlencode($imageName); ?>"
+                                                    <a href="https://app.pvcinterior.in/api/assets/<?php echo urlencode($imageName); ?>"
                                                         target="_blank">
                                                         View
                                                     </a>
@@ -170,7 +170,7 @@ include("header_link.php"); ?>
                     <!-- Current Image Display -->
                     <div class="form-group">
                         <label>Current Image</label><br />
-                        <img src="https://mehndipvc.com/api/assets/<?php echo urlencode($val['filename']); ?>" 
+                        <img src="https://app.pvcinterior.in/api/assets/<?php echo urlencode($val['filename']); ?>" 
                              alt="Gallery Image" 
                              style="width: 100px; height: auto; border: 1px solid #ccc; margin-bottom: 10px;" />
                     </div>
