@@ -153,60 +153,68 @@ include("header_link.php"); ?>
                                                 </div>
                                             </td>
                                         </tr>
-                                        <!-- Edit banner Modal -->
-                                        <div class="modal custom-modal fade" id="edit<?php echo $cnt; ?>" role="dialog">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title">Edit Gallery</h5>
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form id="edit_form<?php echo $cnt; ?>"
-                                                            enctype="multipart/form-data">
-                                                            
-                                                            <div class="form-group">
-                                                                <label>Image <span
-                                                                        class="text-danger">*</span></label><br />
-                                                                <input name="image_new[]"
-                                                                    id="image<?php echo $val['id']; ?>"
-                                                                    class="form-control file<?php echo $to_img; ?>"
-                                                                    type="file" style="margin-top: 10px;" />
-                                                                <input type="hidden" name="old_image"
-                                                                    value="<?php echo $val['filename'] ?>" id="old_image" />
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Status <span
-                                                                        class="text-danger">*</span></label><br />
-                                                                <select class="form-control" name="status">
-                                                                    <option value="">Select status</option>
-                                                                    <option value="Approve"
-                                                                        <?= ($val['status'] == 'Approve') ? 'selected' : ''; ?>>
-                                                                        Approve</option>
-                                                                    <option value="Reject"
-                                                                        <?= ($val['status'] == 'Reject') ? 'selected' : ''; ?>>
-                                                                        Reject</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="submit-section">
-                                                                <input type="hidden" value="<?php echo $val['id']; ?>"
-                                                                    name="id">
-                                                                <input type="submit" name="submit"
-                                                                    id="edit_banner_btn<?php echo $val['id']; ?>"
-                                                                    class="btn btn-primary edit_banner_btn"
-                                                                    value="Submit" />
-                                                            </div>
-                                                            <div class="erMsg<?= $cnt ?> mt-2" style="text-align: center;">
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- / End Edit banner Modal -->
+                                       <!-- Edit banner Modal -->
+<div class="modal custom-modal fade" id="edit<?php echo $cnt; ?>" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Gallery</h5>
+                <button type="button" class="close" data-dismiss="modal"
+                    aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="edit_form<?php echo $cnt; ?>" enctype="multipart/form-data">
+                    
+                    <!-- Current Image Display -->
+                    <div class="form-group">
+                        <label>Current Image</label><br />
+                        <img src="https://mehndipvc.com/api/assets/<?php echo urlencode($val['filename']); ?>" 
+                             alt="Gallery Image" 
+                             style="width: 100px; height: auto; border: 1px solid #ccc; margin-bottom: 10px;" />
+                    </div>
+
+                    <!-- Upload New Image -->
+                    <div class="form-group">
+                        <label>Replace Image (optional)</label><br />
+                        <input name="image_new[]" 
+                               id="image<?php echo $val['id']; ?>" 
+                               class="form-control file" 
+                               type="file" />
+                        <input type="hidden" name="old_image" value="<?php echo $val['filename']; ?>" />
+                        
+                        <!-- Live preview of new image -->
+                        <img id="preview_img<?php echo $val['id']; ?>" style="width: 100px; margin-top: 10px;" />
+                    </div>
+
+                    <!-- Status Dropdown -->
+                    <div class="form-group">
+                        <label>Status <span class="text-danger">*</span></label><br />
+                        <select class="form-control" name="status">
+                            <option value="">Select status</option>
+                            <option value="Approve" <?= ($val['status'] == 'Approve') ? 'selected' : ''; ?>>Approve</option>
+                            <option value="Reject" <?= ($val['status'] == 'Reject') ? 'selected' : ''; ?>>Reject</option>
+                        </select>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="submit-section">
+                        <input type="hidden" value="<?php echo $val['id']; ?>" name="id">
+                        <input type="submit" name="submit"
+                            id="edit_banner_btn<?php echo $val['id']; ?>"
+                            class="btn btn-primary edit_banner_btn"
+                            value="Submit" />
+                    </div>
+
+                    <!-- Message -->
+                    <div class="erMsg<?= $cnt ?> mt-2" style="text-align: center;"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
                                         <!-- Delete banner Modal -->
                                         <div class="modal custom-modal fade" id="delete_holiday<?php echo $cnt; ?>"
                                             role="dialog">
@@ -246,32 +254,33 @@ include("header_link.php"); ?>
                                         </div>
                                         <!-- / End Delete banner Modal -->
                                         <!-- Edit script Modal -->
-                                        <script type="text/javascript">
-                                            $(document).ready(function (e) {
-                                                // Submit form data via Ajax
-                                                $("#edit_form<?php echo $cnt; ?>").on("submit", function (e) {
-                                                    e.preventDefault();
-                                                    //alert("w");
-                                                    $.ajax({
-                                                        type: "POST",
-                                                        url: "edit_gallery.php",
-                                                        data: new FormData(this),
-                                                        contentType: false,
-                                                        cache: false,
-                                                        processData: false,
-                                                        // beforeSend: function(){
-                                                        //     $('.submitBtn').attr("disabled","disabled");
-                                                        //     $('#fupForm').css("opacity",".5");
-                                                        // },
-                                                        success: function (data) {
-                                                            $(".erMsg<?= $cnt ?>").html(data);
-                                                            setTimeout(location.reload.bind(location), 1500);
-                                                        },
-                                                    });
-                                                });
-                                            });
-                                        </script>
-                                        <!-- End Edit Script Modal -->
+                                       <!-- Script for handling edit form and preview -->
+<script type="text/javascript">
+    $(document).ready(function (e) {
+        // Submit form via Ajax
+        $("#edit_form<?php echo $cnt; ?>").on("submit", function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "edit_gallery.php",
+                data: new FormData(this),
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function (data) {
+                    $(".erMsg<?= $cnt ?>").html(data);
+                    setTimeout(location.reload.bind(location), 1500);
+                },
+            });
+        });
+
+        // Preview newly selected image
+        $("#image<?php echo $val['id']; ?>").on("change", function () {
+            var src = URL.createObjectURL(this.files[0]);
+            $("#preview_img<?php echo $val['id']; ?>").attr("src", src);
+        });
+    });
+</script>
                                         <!-- Delete Script Modal -->
                                         <script>
                                             $("#dlt_btn<?php echo $val['item_id']; ?>").click("submit", function () {
