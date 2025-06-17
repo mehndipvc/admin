@@ -25,9 +25,6 @@ include("config.php");
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css">
 <!-- Fancybox -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
     <div class="main-wrapper">
@@ -242,70 +239,76 @@ include("config.php");
         </div>
     </div>
     <?php include("footer_link.php"); ?>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
     <script>
-        $(document).ready(function () {
-            $('.summernote').summernote();
+       $(document).ready(function () {
+    $('.summernote').summernote();
 
-            $('#productTable').DataTable({
-                pageLength: 100,
-                searching: true
-            });
+    $('#productTable').DataTable({
+        pageLength: 100,
+        searching: true
+    });
 
-            $('#add').on('click', function () {
-                let count = $('#total_item').val();
-                count++;
-                $('#total_item').val(count);
-                $('#row').append(<div class="form-group" id="ro${count}">
+    $('#add').on('click', function () {
+        let count = parseInt($('#total_item').val());
+        count++;
+        $('#total_item').val(count);
+        $('#row').append(`
+            <div class="form-group" id="ro${count}">
                 <label>Image ${count}</label>
                 <div class="d-flex">
                     <input type="file" name="image[]" class="form-control" style="width:90%;">
-                    <span class="btn btn-danger remove_row" style="width:10%;" data-id="${count}"><i class="fa fa-remove"></i></span>
+                    <span class="btn btn-danger remove_row" style="width:10%;" data-id="${count}">
+                        <i class="fa fa-remove"></i>
+                    </span>
                 </div>
-            </div>);
-            });
+            </div>
+        `);
+    });
 
-            $(document).on('click', '.remove_row', function () {
-                let id = $(this).data('id');
-                $(#ro${id}).remove();
-            });
+    $(document).on('click', '.remove_row', function () {
+        let id = $(this).data('id');
+        $(`#ro${id}`).remove();
+    });
 
-            $('#fupForm').on('submit', function (e) {
-                e.preventDefault();
-                $.ajax({
-                    url: "add_product.php",
-                    type: "POST",
-                    data: new FormData(this),
-                    contentType: false,
-                    processData: false,
-                    beforeSend: function () {
-                        $('.statusMsg').html('Submitting...');
-                    },
-                    success: function (data) {
-                        if (data === 'ok') {
-                            $('.statusMsg').html('<div class="alert alert-success">Product added successfully!</div>');
-                            setTimeout(() => location.reload(), 2000);
-                        } else {
-                            $('.statusMsg').html(<div class="alert alert-danger">${data}</div>);
-                        }
-                    }
-                });
-            });
-
-            $('.delete-btn').click(function () {
-                let id = $(this).data('id');
-                $.post('delete_product.php', { dlt_btn: id }, function (data) {
-                    $(#status${id}).html(data);
-                    setTimeout(() => location.reload(), 1500);
-                });
-            });
+    $('#fupForm').on('submit', function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: "add_product.php",
+            type: "POST",
+            data: new FormData(this),
+            contentType: false,
+            processData: false,
+            beforeSend: function () {
+                $('.statusMsg').html('Submitting...');
+            },
+            success: function (data) {
+                if (data === 'ok') {
+                    $('.statusMsg').html('<div class="alert alert-success">Product added successfully!</div>');
+                    setTimeout(() => location.reload(), 2000);
+                } else {
+                    $('.statusMsg').html(`<div class="alert alert-danger">${data}</div>`);
+                }
+            }
         });
+    });
+
+    $('.delete-btn').click(function () {
+        let id = $(this).data('id');
+        $.post('delete_product.php', { dlt_btn: id }, function (data) {
+            $(`#status${id}`).html(data);
+            setTimeout(() => location.reload(), 1500);
+        });
+    });
+});
     </script>
 
 </body>
