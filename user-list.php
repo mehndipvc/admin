@@ -59,8 +59,6 @@ include("header_link.php"); ?>
                         </div>
                     </div>
                 </div>
-                <!-- /Page Header -->
-                <script src="js/jquery-3.2.1.min.js"></script>
 
                 <!-- Edit Modal -->
                 <div class="modal custom-modal fade" id="add_user" role="dialog">
